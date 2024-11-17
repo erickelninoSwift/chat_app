@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const { notFoundHandler, errorhandler } = require("./middlewares/common/error");
+
 dotenv.config();
 
 const app = express();
@@ -36,6 +38,13 @@ app.get("/", (request, response) => {
 
 // Error Handling
 
+// 404 not found
+app.use(notFoundHandler);
+// ==========
+
+// Common error handler
+
+app.use(errorhandler);
 // =========
 
 const handleMongoDBConnection = async () => {
@@ -46,5 +55,5 @@ const handleMongoDBConnection = async () => {
 
 app.listen(PORT, () => {
   handleMongoDBConnection();
-  return console.log(`Server is running on port : ${PORT}`);
+  return console.log(`Server is running on port : ${process.env.PORT}`);
 });
