@@ -1,7 +1,5 @@
 const handleInboxController = async (request, response, next) => {
-  response.render("inbox", {
-    title: "inbox - Chat Application",
-  });
+  response.render("inbox");
   next();
 };
 
