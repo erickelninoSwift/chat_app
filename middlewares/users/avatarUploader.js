@@ -5,6 +5,8 @@ const avatarupload = (request, response, next) => {
     1000000,
     "Only .jpg , jpeg, png format allowed"
   );
+
+  next();
 };
 
 module.exports = {
